@@ -1,0 +1,52 @@
+*.classpath
+*.project
+*.prefs
+*.launch
+*.iml
+!org.eclipse.core.resources.prefs
+*/target/
+dist
+*/bin/
+!.idea/
+.idea/*
+!.idea/runConfigurations
+!.idea/codeStyleSettings.xml
+local.*.properties
+*.orig
+*.bak
+.gitignore.orig
+
+# Logs
+logs
+*.log
+npm-debug.log*
+
+# Runtime data
+pids
+*.pid
+*.seed
+*.pid.lock
+
+# Dependency directories
+node_modules/
+jspm_packages/
+
+# Optional npm cache directory
+.npm
+
+# Optional eslint cache
+.eslintcache
+
+# dotenv environment variables file
+.env
+
+
+#eslint result
+eslintReport.html
+
+proxy.local.js
+coverage/
+.tmp-globalize-webpack/
+/.idea/codeStyleSettings.xml
+
+/build

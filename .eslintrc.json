@@ -1,0 +1,39 @@
+{
+	"parserOptions": {
+		"ecmaVersion": 6,
+		"sourceType": "module"
+	},
+	"parser": "babel-eslint",
+	"extends": "airbnb-base",
+	"rules": {
+		"no-console": "off",
+		"import/no-named-as-default": "off",
+		"linebreak-style": ["error", "unix"],
+		"no-tabs": "off",
+	  	"quotes": ["error", "double",  { "allowTemplateLiterals": true }],
+	  	"keyword-spacing": ["error"],
+	  	"class-methods-use-this": "off",
+		"padded-blocks": "off",
+	  	"arrow-body-style": ["error", "as-needed"],
+		"indent": ["error", "tab"],
+	  	"comma-dangle": ["error", "never"],
+	  	"max-len": ["error", 200],
+	  	"no-use-before-define": "off",
+	  "no-plusplus": "off"
+	},
+	"env": {
+		"node": true
+	},
+  "globals": {
+	"chai": true
+
+  },
+	"settings": {
+		"import/resolver": {
+			"node": {
+				"#": "using node resolver instead of webpack since it wasn't working with intellij plugin for absolute imports like utils/dates",
+				"moduleDirectory": ["src", "node_modules"]
+			}
+		}
+	}
+}

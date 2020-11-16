@@ -1,0 +1,55 @@
+trigger:
+  - master
+
+jobs:
+- job: build
+  displayName: Build
+  steps:
+  - task: NodeTool@0
+    inputs:
+      versionSpec: '8.11.2'
+    displayName: 'Install Node.js'
+  - script: |
+      npm install npm -g
+    displayName: 'Update npm'
+  - script: |
+      echo "Node version"
+      node -v
+      echo "Npm version"
+      npm -version
+    displayName: 'node version'
+  - script: |
+      git config credential.helper store
+      echo "https://$GIT_USERNAME:$GIT_PASSWORD@github.com" > ~/.git-credentials
+      git config --global user.name "Azure DevOps CI"
+      git config --global user.email "no-email@nexus.kmd.dk"
+      git config --global push.default simple
+    env:
+      GIT_USERNAME: $(git.username)
+      GIT_PASSWORD: $(git.password)
+    displayName: Set Git user data and credentials
+  - script: |
+      npm ci
+    displayName: 'npm ci'
+  - script: |
+      npm run read-version-from-git
+      NewVersion=`npm version $RELEASE_VERSION_INCREMENTER -no-git-tag-version`
+      git tag $NewVersion -m "$NewVersion"
+      git push --tags
+    condition: and(succeeded(), eq(variables['release.new.version'], 'true'))
+    env:
+      RELEASE_VERSION_INCREMENTER: $(release.version.incrementer)
+    displayName: 'increment version'
+  - task: Npm@1
+    displayName: 'npm publish'
+    condition: and(succeeded(), eq(variables['release.new.version'], 'true'))
+    inputs:
+      command: publish
+      verbose: false
+      publishRegistry: useFeed
+      publishFeed: 'e89b4a72-5c2a-4039-bc52-89e465ee7e5e'
+  - script: |
+      FinalVersion=`cat package.json | jq -r '.version'`
+      echo "##vso[build.updatebuildnumber]$FinalVersion"
+    condition: and(succeeded(), eq(variables['release.new.version'], 'true'))
+    displayName: 'Set released version on build'
