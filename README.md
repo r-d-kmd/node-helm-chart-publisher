@@ -1,7 +1,6 @@
-# gradle-helm-chart-publisher
-[![Build Status](https://travis-ci.org/r-d-kmd/gradle-helm-chart-publisher.svg?branch=main)](https://travis-ci.org/r-d-kmd/gradle-helm-chart-publisher)
+# node-helm-chart-publisher
 
-_gradle package helm chart and publish to git repository plugin_ 
+_node package helm chart and publish to git repository plugin_ 
 
 Helm chart is an integral part of a project, more often its definition is placed as closest to code as possible. 
 
@@ -31,12 +30,11 @@ This plugin packages the chart and leverages the possibility of using git reposi
     }
 }
 ```
-- execute task
+- run script
 ```
 $ npm run helm-chart-publish -- --chart.version=1.0.3 --gitChartRepo.url=<HELM-CHART-GIT-URL> --gitChartRepo.username=<HELM-CHART-GIT-USERNAME> --gitChartRepo.password=<HELM-CHART-GIT-PASSWORD>
 
 ```
-
 
 ## Requirements
 
