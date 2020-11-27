@@ -1,3 +1,5 @@
+/* eslint-disable no-await-in-loop */
+
 const gitP = require("simple-git/promise");
 const helm = require("./helm");
 

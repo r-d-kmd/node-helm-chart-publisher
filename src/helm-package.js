@@ -1,11 +1,17 @@
+const fs = require("fs");
 const helm = require("./helm");
 
-const helmPackage = ({ chartPath, chartVersion, packageDestinationPath = "." }) => {
-	console.log(`Prepare Helm chart package from ${chartPath}`);
+const helmPackage = ({ chartDefinitionPath, chartVersion, packageDestinationPath }) => {
+	console.log(`Prepare Helm chart package from ${chartDefinitionPath}`);
 	if (helm.version().startsWith("2")) {
 		helm.init();
 	}
-	helm.run(`package --version ${chartVersion} --destination ${packageDestinationPath} ${chartPath}`);
+
+	if (!fs.existsSync(packageDestinationPath)) {
+		fs.mkdirSync(packageDestinationPath);
+	}
+
+	helm.run(`package --version ${chartVersion} --destination ${packageDestinationPath} ${chartDefinitionPath}`);
 };
 
 module.exports = helmPackage;

@@ -11,13 +11,13 @@ const deleteRepoDirectory = async (localChartRepoPath) => {
 
 const cloneChartsRepo = async (gitUrl, destinationPath) => {
 	const url = new URL(gitUrl);
-	console.log(`Cloning charts repo ${url.origin}/${url.pathname} to '${destinationPath}'`);
+	console.log(`Cloning charts repo ${url.origin}${url.pathname} to '${destinationPath}'`);
 	await git.clone(gitUrl, destinationPath);
 };
 
-const prepare = async ({ gitUrl, destination }) => {
-	await deleteRepoDirectory(destination);
-	await cloneChartsRepo(gitUrl, destination);
+const prepare = async ({ gitUrl, clonedGitChartRepositoryPath }) => {
+	await deleteRepoDirectory(clonedGitChartRepositoryPath);
+	await cloneChartsRepo(gitUrl, clonedGitChartRepositoryPath);
 };
 
 module.exports = prepare;

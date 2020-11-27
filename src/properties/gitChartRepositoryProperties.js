@@ -24,4 +24,4 @@ const gitPassword = gitChartRepositoryArgs.password || args.gitPassword || proce
 const workDir = gitChartRepositoryArgs.workDir || config.gitChartRepoWorkDir || "";
 const gitUrl = gitUrlParse(gitChartRepoUrl, gitUser, gitPassword);
 
-module.exports = { url: gitUrl, workPath: workDir };
+module.exports = { url: gitUrl, workDir };
