@@ -1,0 +1,25 @@
+sudo: required
+
+language: node_js
+node_js:
+  - 10
+
+env:
+  global:
+    - HELM_URL=https://storage.googleapis.com/kubernetes-helm
+    - HELM_TGZ=helm-v2.14.1-linux-amd64.tar.gz
+
+install:
+  - wget -q ${HELM_URL}/${HELM_TGZ}
+  - tar xzfv ${HELM_TGZ}
+  - PATH=`pwd`/linux-amd64/:$PATH
+  - helm init --client-only
+
+before_script:
+  - npm ci
+script:
+  - npm run lint
+  - npm test
+
+services:
+  - docker
