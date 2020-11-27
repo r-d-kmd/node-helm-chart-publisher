@@ -18,7 +18,7 @@
     "lint": "eslint  --ext .js --ext .jsx src & exit 0",
     "pretest": "docker build --tag local-git:1.0.0 docker/ && docker run --publish 8080:80 --name local-git local-git:1.0.0 &",
     "test": "jest || :",
-    "posttest": "docker stop local-git || true && docker rm local-git"
+    "posttest": "docker stop local-git && docker rm local-git"
   },
   "dependencies": {
     "cosmiconfig": "^5.2.1",
