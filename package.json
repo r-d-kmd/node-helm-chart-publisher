@@ -16,8 +16,9 @@
   "scripts": {
     "read-version-from-git": "VersionFromGit=$(git-tag-version) && npm version $VersionFromGit -no-git-tag-version",
     "lint": "eslint  --ext .js --ext .jsx src & exit 0",
-    "start-local-git": "docker build --tag local-git:1.0.0 docker/ && docker stop local-git || true && docker rm local-git || true  && docker run --publish 8080:80 --name local-git local-git:1.0.0 &",
-    "test": "npm run start-local-git && jest"
+    "pretest": "docker build --tag local-git:1.0.0 docker/ && docker run --publish 8080:80 --name local-git local-git:1.0.0 &",
+    "test": "jest || :",
+    "posttest": "docker stop local-git || true && docker rm local-git"
   },
   "dependencies": {
     "cosmiconfig": "^5.2.1",
