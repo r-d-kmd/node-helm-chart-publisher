@@ -13,7 +13,7 @@ install:
   - wget -q ${HELM_URL}/${HELM_TGZ}
   - tar xzfv ${HELM_TGZ}
   - PATH=`pwd`/linux-amd64/:$PATH
-  - helm init --client-only
+  - helm init --client-only --skip-refresh
 
 before_script:
   - npm ci
