@@ -10,7 +10,7 @@ const helmPackage = ({ chartDefinitionPath, chartVersion, packageDestinationPath
 	if (!fs.existsSync(packageDestinationPath)) {
 		fs.mkdirSync(packageDestinationPath);
 	}
-
+	helm.run(`dependency update ${chartDefinitionPath}`);
 	helm.run(`package --version ${chartVersion} --destination ${packageDestinationPath} ${chartDefinitionPath}`);
 };
 
