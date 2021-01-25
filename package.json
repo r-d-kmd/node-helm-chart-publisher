@@ -1,6 +1,6 @@
 {
-  "name": "@kmd/helm-chart-publisher",
-  "version": "0.0.0",
+  "name": "helm-chart-publisher",
+  "version": "1.0.0",
   "description": "Scripts for pushing Helm chart to repository in Git",
   "bin": {
     "helm-chart-publisher": "src/index.js"
@@ -12,7 +12,12 @@
     "kubernetes"
   ],
   "author": "KMD",
-  "license": "proprietary",
+  "license": "MIT License",
+  "homepage": "https://github.com/r-d-kmd/node-helm-chart-publisher",
+  "bugs": {
+    "url": "https://github.com/r-d-kmd/node-helm-chart-publisher",
+    "email": "helm-chart-publisher@kmd.dk"
+  },
   "scripts": {
     "read-version-from-git": "VersionFromGit=$(git-tag-version) && npm version $VersionFromGit -no-git-tag-version",
     "lint": "eslint  --ext .js --ext .jsx src & exit 0",
