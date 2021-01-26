@@ -1,6 +1,6 @@
 {
   "name": "helm-chart-publisher",
-  "version": "0.1.1",
+  "version": "1.0.0",
   "description": "Scripts for pushing Helm chart to repository in Git",
   "bin": {
     "helm-chart-publisher": "src/index.js"
