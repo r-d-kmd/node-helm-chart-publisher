@@ -1,4 +1,6 @@
 # node-helm-chart-publisher
+[![Build Status](https://travis-ci.org/r-d-kmd/node-helm-chart-publisher.svg?branch=main)](https://travis-ci.org/r-d-kmd/node-helm-chart-publisher)
+[![NPM](https://nodei.co/npm/helm-chart-publisher.png?mini=true)](https://npmjs.org/package/helm-chart-publisher)
 
 _node package helm chart and publish to git repository plugin_ 
 
@@ -59,5 +61,5 @@ Git username | Git repository username | - | `gitChartRepo.username` | `HELM_CHA
 Git password | Git repository password | - | `gitChartRepo.password` | `HELM_CHART_PUBLISH_GIT_REPO_PASSWORD` | -
 Git repository working directory | Directory in git repository where helm chart repository is stored | / (root folder of the repository) | `gitChartRepo.workDir` | - | `helm-chart-publish.gitChartRepoWorkDir`
 Chart version | Version under which the chart will be published | project.version |  `chart.version` | - | -
-Chart name | Name of the published chart | project.name |  `chart.name` | - | `helm-chart-publish.chartName`
+Chart name | Name of the chart (must be the same as `name` in chart `valyes.yaml`) | project.name |  `chart.name` | - | `helm-chart-publish.chartName`
 Chart definition path | Where in the project chart definition is stored | `${projectDir}/helm/$chartName` | `chart.definitionPath` | - | `helm-chart-publish.chartDefinitionPath`
